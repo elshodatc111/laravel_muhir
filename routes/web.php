@@ -21,7 +21,8 @@ Route::post('/korzinka_faktura_image', [HomeController::class, 'korzinka_faktura
 
 
 Route::get('/faktura', [FakturaController::class, 'index'])->name('faktura');
-
+Route::get('/faktura_show/{id}', [FakturaController::class, 'faktura_show'])->name('faktura_show');
+Route::post('/faktura_image', [FakturaController::class, 'faktura_image'])->name('faktura_image');
 
 Route::get('/bolim', [BolimController::class, 'index'])->name('bolim');
 Route::get('/create_bolim', [BolimController::class, 'create'])->name('create_bolim');
