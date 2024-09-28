@@ -4,10 +4,10 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Muhirlar</h1>
+  <h1>Dashboard</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Muhir</a></li>
+      <li class="breadcrumb-item"><a href="index.html">Faktura</a></li>
       <li class="breadcrumb-item active">Mavjud muxirlar</li>
     </ol>
   </nav>
@@ -18,7 +18,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-6">
-          <h5 class="card-title"></h5>
+          <h5 class="card-title">Mavjud muxirlar</h5>
         </div>
         <div class="col-6" style="text-align:right">
           <a href="#" class="btn btn-primary mt-3">Yangi Muxir</a>
