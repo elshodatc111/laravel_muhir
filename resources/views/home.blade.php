@@ -7,12 +7,24 @@
   <h1>Muhirlar</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Muhir</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('home') }}">Muhir</a></li>
       <li class="breadcrumb-item active">Mavjud muxirlar</li>
     </ol>
   </nav>
 </div>
-
+@if (Session::has('success'))
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle me-1"></i>
+    {{Session::get('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@elseif (Session::has('error'))
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle me-1"></i>
+    {{Session::get('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@endif
 <section class="section dashboard">
   <div class="card recent-sales overflow-auto">
     <div class="card-body">
@@ -21,7 +33,7 @@
           <h5 class="card-title"></h5>
         </div>
         <div class="col-6" style="text-align:right">
-          <a href="#" class="btn btn-primary mt-3">Yangi Muxir</a>
+          <a href="{{ route('home_create') }}" class="btn btn-primary mt-3">Yangi Muxir</a>
         </div>
       </div>
       <table class="table text-center table-striped table-bordered datatable">
@@ -35,45 +47,25 @@
           </tr>
         </thead>
         <tbody>
+          @forelse($Muxir as $item)
           <tr>
-            <th scope="row"><a href="#">#</a></th>
-            <td>745845</td>
-            <td>2024-04-05 15:14:59</td>
-            <td>Elshod Musurmonov</td>
+            <th scope="row">{{ $loop->index+1 }}</th>
+            <td>{{ $item['number'] }}</td>
+            <td>{{ $item['created_at'] }}</td>
+            <td>{{ $item['operator'] }}</td>
             <td>
-              <form action="" method="post">
+              <form action="{{ route('home_story_pedding') }}" method="post">
                 @csrf 
+                <input type="hidden" name="id" value="{{ $item['id'] }}">
                 <button class="btn btn-primary p-0 m-0 px-1"><i class="bi bi-plus"></i></button>
               </form>
             </td>
           </tr>
-          <tr>
-            <th scope="row"><a href="#">#</a></th>
-            <td>745845</td>
-            <td>2024-04-05 15:14:59</td>
-            <td>Elshod Musurmonov</td>
-            <td>
-              <form action="" method="post">
-                @csrf 
-                <button class="btn btn-primary p-0 m-0 px-1"><i class="bi bi-plus"></i></button>
-              </form>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><a href="#">#</a></th>
-            <td>745845</td>
-            <td>2024-04-05 15:14:59</td>
-            <td>Elshod Musurmonov</td>
-            <td>
-              <form action="" method="post">
-                @csrf 
-                <button class="btn btn-primary p-0 m-0 px-1"><i class="bi bi-plus"></i></button>
-              </form>
-            </td>
-          </tr>
+          @empty
           <tr>
             <td colspan="5">Muxirlar mavjud emas.</td>
           </tr>
+          @endforelse
         </tbody>
       </table>
     </div>

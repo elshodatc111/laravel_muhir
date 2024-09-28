@@ -33,9 +33,9 @@
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li class="nav-item dropdown">
-                    <a class="nav-link nav-icon" href="#">
+                    <a class="nav-link nav-icon" href="{{ route('korzinka') }}">
                         <i class="bi bi-basket"></i>
-                        <span class="badge bg-success badge-number">123</span>
+                        <span class="badge bg-success badge-number">@include('layouts.alert.korzinka')</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown pe-3">
