@@ -4,11 +4,11 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Dashboard</h1>
+  <h1>Statistika</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Chart</a></li>
-      <li class="breadcrumb-item active">Mavjud muxirlar</li>
+      <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+      <li class="breadcrumb-item active">Statistika</li>
     </ol>
   </nav>
 </div>
@@ -25,7 +25,11 @@
             new ApexCharts(document.querySelector("#lineChart"), {
               series: [{
                 name: "Muxirlar soni:",
-                data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 69, 91, 148]
+                data: [
+                  @foreach($keldi as $item)
+                    '{{ $item }}',
+                  @endforeach
+                ]
               }],
               chart: {
                 height: 350,
@@ -47,7 +51,11 @@
                 },
               },
               xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jul', 'Aug', 'Sep'],
+                categories: [
+                  @foreach($Monchs['Y-M'] as $item)
+                  '{{ $item }}',
+                  @endforeach
+                ],
               }
             }).render();
           });
@@ -65,7 +73,11 @@
             new ApexCharts(document.querySelector("#tarqatilgan"), {
               series: [{
                 name: "Muxirlar soni:",
-                data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 69, 91, 148]
+                data: [
+                  @foreach($ketdi as $item)
+                  '{{ $item }}',
+                  @endforeach
+                ]
               }],
               chart: {
                 height: 350,
@@ -87,7 +99,11 @@
                 },
               },
               xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Jul', 'Aug', 'Sep'],
+                categories: [
+                  @foreach($Monchs['Y-M'] as $item)
+                  '{{ $item }}',
+                  @endforeach
+                ],
               }
             }).render();
           });
@@ -105,13 +121,25 @@
             new ApexCharts(document.querySelector("#columnChart"), {
               series: [{
                 name: 'Mavsum boshidan',
-                data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 55, 57, 56, 61, 58, 63, 60, 66]
+                data: [
+                  @foreach($MavsuBoshidan as $item)
+                    '{{ $item }}',
+                  @endforeach
+                ]
               }, {
                 name: 'Yil boshidan',
-                data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 55, 57, 56, 61, 58, 63, 60, 66]
+                data: [
+                  @foreach($YilBoshidan as $item)
+                    '{{ $item }}',
+                  @endforeach
+                ]
               }, {
                 name: 'Oy boshidan',
-                data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 55, 57, 56, 61, 58, 63, 60, 66]
+                data: [
+                  @foreach($OyBoshidan as $item)
+                    '{{ $item }}',
+                  @endforeach
+                ]
               }],
               chart: {
                 type: 'bar',
@@ -133,7 +161,11 @@
                 colors: ['transparent']
               },
               xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                categories: [
+                  @foreach($bolimlar2 as $key => $item)
+                  "{{ $item }}",
+                  @endforeach
+                ],
               },
               yaxis: {
                 title: {
@@ -153,8 +185,6 @@
             }).render();
           });
         </script>
-        <!-- End Column Chart -->
-
       </div>
     </div>
   </div>

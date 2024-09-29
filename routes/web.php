@@ -9,6 +9,8 @@ use App\Http\Controllers\BolimController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/updatePassword', [HomeController::class, 'updatePassword'])->name('updatePassword');
+Route::post('/updatePasswordStory', [HomeController::class, 'updatePasswordStory'])->name('updatePasswordStory');
 Route::get('/tarqatildi', [HomeController::class, 'tarqatildi'])->name('tarqatildi');
 Route::get('/home_create', [HomeController::class, 'create'])->name('home_create');
 Route::post('/home_story', [HomeController::class, 'story'])->name('home_story');

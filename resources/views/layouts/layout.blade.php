@@ -50,6 +50,12 @@
                             <span>{{ Auth::user()->email }}</span>
                         </li>
                         <li><hr class="m-0 p-0">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('updatePassword') }}">
+                                <i class="bi bi-lock"></i>
+                                <span>Parolni yangilash</span>
+                            </a>
+                        </li>
+                        <li><hr class="m-0 p-0">
                             <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>

@@ -7,6 +7,8 @@ use App\Models\Bolim;
 use App\Models\Hodim;
 use App\Models\Muxir;
 use App\Models\Korzinka;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller{
     public function __construct(){
@@ -149,5 +151,21 @@ class HomeController extends Controller{
             $tarqatildi[$key]['data'] = $Korzinka->updated_at;
         }
         return view('tarqatildi',compact('tarqatildi'));
+    }
+    public function updatePassword(){
+        return view('updatePassword');
+    }
+    public function updatePasswordStory(Request $request){
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+        if (!Hash::check($request->current_password, Auth::user()->password)) {
+            return back()->with(['current_password' => 'Hozirgi parol noto\'g\'ri']);
+        }
+        $user = Auth::user();
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        return back()->with('status', 'Parol muvaffaqiyatli yangilandi!');
     }
 }
