@@ -7,6 +7,7 @@ use App\Models\Bolim;
 use App\Models\Hodim;
 use App\Models\Muxir;
 use App\Models\Korzinka;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -168,4 +169,50 @@ class HomeController extends Controller{
         $user->save();
         return back()->with('status', 'Parol muvaffaqiyatli yangilandi!');
     }
+
+
+    public function Hodimlar(){
+        $User = User::where('email','!=','elshodatc1116@gmail.com')->get();
+        return view('Hodimlar',compact('User'));
+    }
+    public function HodimlarCreate(Request $request){
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make('12345678'),
+        ]);
+        return back()->with('success', 'Yangi hodim qo\'shildi');
+    }
+    public function HodimlarDelete(Request $request){
+        $request->validate([
+            'id' => ['required'],
+        ]);
+        $User = User::find($request->id);
+        $User->delete();
+        return back()->with('success', 'Hodim o\'chirildi');
+    }
+    public function HodimRessetPassword(Request $request){
+        $request->validate([
+            'id' => ['required'],
+        ]);
+        $User = User::find($request->id);
+        $User->password = Hash::make('12345678');
+        $User->save();
+        return back()->with('success', 'Hodimning paroli yangilandi!');
+    }
+    public function RetsertKorzinka(){
+        $Korzinka = Muxir::where('number_id','null')->where('type','!=','new')->get();
+        foreach ($Korzinka as $key => $value) {
+            $Korzinka2 = Muxir::find($value->id);
+            $Korzinka2->type = 'new';
+            $Korzinka2->save();
+        }
+        return back();
+    }
+
+
 }

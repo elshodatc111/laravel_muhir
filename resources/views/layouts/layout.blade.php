@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Dashboard</title>
+  <title>Muxir</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <link href="assets/img/favicon.png" rel="icon">
@@ -26,13 +26,22 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('home') }}" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Nimadir</span>
+                <span class="d-none d-lg-block">Muxir</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" title="Korzinkani tozalash">
+                    <form action="{{ route('RetsertKorzinka') }}" method="post">
+                        @csrf 
+                        <button class="nav-link nav-icon" href="{{ route('korzinka') }}">
+                            <i class="bi bi-trash text-danger"></i>
+                            <span class="badge bg-warning badge-number">@include('layouts.alert.delete')</span>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item dropdown" title="Korzinka">
                     <a class="nav-link nav-icon" href="{{ route('korzinka') }}">
                         <i class="bi bi-basket"></i>
                         <span class="badge bg-success badge-number">@include('layouts.alert.korzinka')</span>
@@ -107,6 +116,14 @@
                     <span>Hisobot</span>
                 </a>
             </li>
+            @if(auth()->user()->email=='elshodatc1116@gmail.com')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('Hodimlar') }}">
+                    <i class="bi bi-people"></i>
+                    <span>Hodimlar</span>
+                </a>
+            </li>
+            @endif
         </ul>
 
     </aside>

@@ -22,7 +22,6 @@ Route::post('/korzinka_faktura', [HomeController::class, 'korzinka_faktura'])->n
 Route::get('/korzinka_show/{id}', [HomeController::class, 'korzinka_show'])->name('korzinka_show');
 Route::post('/korzinka_faktura_image', [HomeController::class, 'korzinka_faktura_image'])->name('korzinka_faktura_image');
 
-
 Route::get('/faktura', [FakturaController::class, 'index'])->name('faktura');
 Route::get('/faktura_show/{id}', [FakturaController::class, 'faktura_show'])->name('faktura_show');
 Route::post('/faktura_image', [FakturaController::class, 'faktura_image'])->name('faktura_image');
@@ -35,9 +34,13 @@ Route::post('/create_bolim/update', [BolimController::class, 'update'])->name('c
 Route::post('/create_bolim/create/hodim', [BolimController::class, 'hodimStory'])->name('create_bolim_create_hodim');
 Route::post('/create_bolim/delete/hodim', [BolimController::class, 'hodimDelete'])->name('create_bolim_delete_hodim');
 
-
 Route::get('/chart', [ChartController::class, 'index'])->name('chart');
 
-
-
 Route::get('/xisobot', [ChartController::class, 'xisobot'])->name('xisobot');
+
+
+Route::get('/hodimlar', [HomeController::class, 'Hodimlar'])->name('Hodimlar');
+Route::post('/hodimlar/create', [HomeController::class, 'HodimlarCreate'])->name('HodimlarCreate');
+Route::post('/hodimlar/delete', [HomeController::class, 'HodimlarDelete'])->name('HodimlarDelete');
+Route::post('/hodimlar/resset/password', [HomeController::class, 'HodimRessetPassword'])->name('HodimRessetPassword');
+Route::post('/resset/korzinka', [HomeController::class, 'RetsertKorzinka'])->name('RetsertKorzinka');
