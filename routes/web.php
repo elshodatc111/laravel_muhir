@@ -9,6 +9,7 @@ use App\Http\Controllers\BolimController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/tarqatildi', [HomeController::class, 'tarqatildi'])->name('tarqatildi');
 Route::get('/home_create', [HomeController::class, 'create'])->name('home_create');
 Route::post('/home_story', [HomeController::class, 'story'])->name('home_story');
 Route::post('/home_story_pedding', [HomeController::class, 'story_pedding'])->name('home_story_pedding');
@@ -34,3 +35,7 @@ Route::post('/create_bolim/delete/hodim', [BolimController::class, 'hodimDelete'
 
 
 Route::get('/chart', [ChartController::class, 'index'])->name('chart');
+
+
+
+Route::get('/xisobot', [ChartController::class, 'xisobot'])->name('xisobot');

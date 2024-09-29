@@ -135,4 +135,19 @@ class HomeController extends Controller{
         $Korzinka->save();
         return redirect()->route('home')->with('success', "Faktura tasdiqlangan fayli yuklandi");
     }
+    public function tarqatildi(){
+        $Muxir = Muxir::where('type','Send')->get();
+        $tarqatildi = array();
+        foreach ($Muxir as $key => $value) {
+            $Korzinka = Korzinka::where('number',$value->number_id)->first();
+            $Bolim = Bolim::where('coato',$Korzinka->coato)->first()->name;
+            $tarqatildi[$key]['number'] = $value->number;
+            $tarqatildi[$key]['bolim'] = $Bolim;
+            $tarqatildi[$key]['muxirchi'] = $Korzinka->fio;
+            $tarqatildi[$key]['operator'] = $Korzinka->opertor;
+            $tarqatildi[$key]['faktura'] = $Korzinka->number ;
+            $tarqatildi[$key]['data'] = $Korzinka->updated_at;
+        }
+        return view('tarqatildi',compact('tarqatildi'));
+    }
 }

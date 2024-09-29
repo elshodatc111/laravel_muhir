@@ -115,4 +115,16 @@
 </section>
 
 </main>
+<script>
+    document.getElementById('printButton').addEventListener('click', function() {
+      var printContents = document.querySelector('.print-section').innerHTML;
+      var originalContents = document.body.innerHTML;
+
+      document.body.innerHTML = printContents;
+
+      window.print();
+
+      document.body.innerHTML = originalContents;
+    });
+  </script>
 @endsection

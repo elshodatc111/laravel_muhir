@@ -72,6 +72,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('tarqatildi') }}">
+                    <i class="bi bi-rss"></i>
+                    <span>Tarqatilgan muxirlar</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('faktura') }}">
                     <i class="bi bi-file-earmark-pdf"></i>
                     <span>Fakturalar</span>
@@ -87,6 +93,12 @@
                 <a class="nav-link collapsed" href="{{ route('chart') }}">
                     <i class="bi bi-bar-chart"></i>
                     <span>Statistika</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('xisobot') }}">
+                    <i class="bi bi-file-excel"></i>
+                    <span>Hisobot</span>
                 </a>
             </li>
         </ul>
