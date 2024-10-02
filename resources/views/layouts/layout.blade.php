@@ -83,19 +83,19 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('home') }}">
                     <i class="bi bi-grid"></i>
-                    <span>Muxirlar</span>
+                    <span>Home</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('tarqatildi') }}">
                     <i class="bi bi-rss"></i>
-                    <span>Tarqatilgan muxirlar</span>
+                    <span>Tarqatildi</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('faktura') }}">
                     <i class="bi bi-file-earmark-pdf"></i>
-                    <span>Fakturalar</span>
+                    <span>Faktura</span>
                 </a>
             </li>
             <li class="nav-item">

@@ -12,7 +12,18 @@
     </ol>
   </nav>
 </div>
-
+<div class="card">
+  <div class="card-body pt-3">
+    <ul class="nav nav-tabs nav-tabs-bordered d-flex">
+      <li class="nav-item flex-fill bg-primary text-white" role="presentation">
+        <a href="{{ route('faktura') }}" class="nav-link w-100 text-center bg-primary text-white">Faktura Muxirlar</a>
+      </li>
+      <li class="nav-item flex-fill bg-secondary text-white" role="presentation">
+        <a href="#" class="nav-link w-100 text-center bg-secondary text-white">Faktura Naryadlar</a>
+      </li>
+    </ul>
+  </div>
+</div>
 <section class="section dashboard">
   <div class="card recent-sales overflow-auto">
     <div class="card-body pt-3">

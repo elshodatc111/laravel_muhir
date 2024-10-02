@@ -26,11 +26,23 @@
   </div>
 @endif
 <section class="section dashboard">
+  <div class="card">
+    <div class="card-body pt-3">
+      <ul class="nav nav-tabs nav-tabs-bordered d-flex">
+        <li class="nav-item flex-fill bg-primary text-white" role="presentation">
+          <a href="{{ route('home') }}" class="nav-link w-100 text-center bg-primary text-white">Mavjud Muxirlar</a>
+        </li>
+        <li class="nav-item flex-fill bg-secondary text-white" role="presentation">
+          <a href="#" class="nav-link w-100 text-center bg-secondary text-white">Mavjud Naryadlar</a>
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="card recent-sales overflow-auto">
-    <div class="card-body">
+    <div class="card-body">              
       <div class="row">
         <div class="col-6">
-          <h5 class="card-title"></h5>
+          <h5 class="card-title">Mavjud Muxirlar</h5>
         </div>
         <div class="col-6" style="text-align:right">
           <a href="{{ route('home_create') }}" class="btn btn-primary mt-3">Yangi Muxir</a>
