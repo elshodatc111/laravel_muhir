@@ -31,7 +31,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title w-100 text-center">Parolni yangilash</h4>
-          <form action="{{ route('updatePasswordStory') }}" method="post">
+          <form action="{{ route('admin_profel_update_password') }}" method="post">
             @csrf 
             <label for="current_password">Joriy parol</label>
             <input type="password" name="current_password" class="form-control mb-2" required>

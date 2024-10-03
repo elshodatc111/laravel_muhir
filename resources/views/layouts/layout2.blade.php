@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Muxir</title>
+  <title>@yield('title')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/favicon1.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon1.png" rel="apple-touch-icon">
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,26 +25,17 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('home') }}" class="logo d-flex align-items-center">
-                <img src="../assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Muxir</span>
+                <img src="../assets/img/logo1.png" alt="">
+                <span class="d-none d-lg-block">TEXT</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-                <li class="nav-item dropdown" title="Korzinkani tozalash">
-                    <form action="{{ route('RetsertKorzinka') }}" method="post">
-                        @csrf 
-                        <button class="nav-link nav-icon" href="{{ route('korzinka') }}">
-                            <i class="bi bi-trash text-danger"></i>
-                            <span class="badge bg-warning badge-number">@include('layouts.alert.delete')</span>
-                        </button>
-                    </form>
-                </li>
                 <li class="nav-item dropdown" title="Korzinka">
-                    <a class="nav-link nav-icon" href="{{ route('korzinka') }}">
-                        <i class="bi bi-basket"></i>
-                        <span class="badge bg-success badge-number">@include('layouts.alert.korzinka')</span>
+                    <a class="nav-link nav-icon" href="#">
+                        <i class="bi bi-hourglass-split"></i>
+                        <span class="badge bg-success badge-number">2</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown pe-3">
@@ -59,8 +50,8 @@
                             <span>{{ Auth::user()->email }}</span>
                         </li>
                         <li><hr class="m-0 p-0">
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('updatePassword') }}">
-                                <i class="bi bi-lock"></i>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('admin_profel') }}">
+                                <i class="bi bi-lock-fill"></i>
                                 <span>Parolni yangilash</span>
                             </a>
                         </li>
@@ -77,51 +68,66 @@
             </ul>
         </nav>
     </header>
+  
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('home') }}">
-                    <i class="bi bi-grid"></i>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            @if(auth()->user()->role==1 OR auth()->user()->role==2 OR auth()->user()->role==3)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-hurricane"></i>
                     <span>Muxirlar</span>
                 </a>
             </li>
-            
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('tarqatildi') }}">
-                    <i class="bi bi-rss"></i>
-                    <span>Tarqatilgan muxirlar</span>
-                </a>
-            </li>
-    
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('faktura') }}">
-                    <i class="bi bi-file-earmark-pdf"></i>
-                    <span>Fakturalar</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-file-earmark-diff-fill"></i>
+                    <span>Naryad(blanka)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('bolim') }}">
-                    <i class="bi bi-bank2"></i>
-                    <span>Bo'lim (hodimlar)</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-sd-card-fill"></i>
+                    <span>Sim kartalar</span>
+                </a>
+            </li>
+            @endif
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-folder-fill"></i>
+                    <span>Naryadlar</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('chart') }}">
-                    <i class="bi bi-bar-chart"></i>
-                    <span>Statistika</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-file-medical-fill"></i>
+                    <span>Arxiv</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('xisobot') }}">
-                    <i class="bi bi-file-excel"></i>
-                    <span>Hisobot</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-search"></i>
+                    <span>Qidruv</span>
                 </a>
             </li>
-            @if(auth()->user()->email=='elshodatc1116@gmail.com')
+            @if(auth()->user()->role==1 OR auth()->user()->role==2)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('Hodimlar') }}">
-                    <i class="bi bi-people"></i>
-                    <span>Hodimlar</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-file-person"></i>
+                    <span>Bo'limlar(Hodimlar)</span>
+                </a>
+            </li>
+            @endif
+            @if(auth()->user()->role==1)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin_user') }}">
+                    <i class="bi bi-person-lines-fill"></i>
+                    <span>Administrator</span>
                 </a>
             </li>
             @endif

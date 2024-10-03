@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-
+@section('title',"Home")
 @section('content')
 <main id="main" class="main">
 
@@ -27,15 +27,7 @@
 @endif
 <section class="section dashboard">
   <div class="card recent-sales overflow-auto">
-    <div class="card-body">              
-      <div class="row">
-        <div class="col-6">
-          <h5 class="card-title">Mavjud Muxirlar</h5>
-        </div>
-        <div class="col-6" style="text-align:right">
-          <a href="{{ route('home_create') }}" class="btn btn-primary mt-3">Yangi Muxir</a>
-        </div>
-      </div>
+    <div class="card-body">   
       <table class="table text-center table-striped table-bordered datatable">
         <thead>
           <tr>
@@ -47,25 +39,8 @@
           </tr>
         </thead>
         <tbody>
-          @forelse($Muxir as $item)
-          <tr>
-            <th scope="row">{{ $loop->index+1 }}</th>
-            <td>{{ $item['number'] }}</td>
-            <td>{{ $item['created_at'] }}</td>
-            <td>{{ $item['operator'] }}</td>
-            <td>
-              <form action="{{ route('home_story_pedding') }}" method="post">
-                @csrf 
-                <input type="hidden" name="id" value="{{ $item['id'] }}">
-                <button class="btn btn-primary p-0 m-0 px-1"><i class="bi bi-plus"></i></button>
-              </form>
-            </td>
-          </tr>
-          @empty
-          <tr>
-            <td colspan="5">Muxirlar mavjud emas.</td>
-          </tr>
-          @endforelse
+
+        
         </tbody>
       </table>
     </div>

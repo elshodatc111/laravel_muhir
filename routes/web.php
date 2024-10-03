@@ -2,45 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\FakturaController;
-use App\Http\Controllers\ChartController;
-use App\Http\Controllers\BolimController;
+use App\Http\Controllers\UserController;
+
+
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/updatePassword', [HomeController::class, 'updatePassword'])->name('updatePassword');
-Route::post('/updatePasswordStory', [HomeController::class, 'updatePasswordStory'])->name('updatePasswordStory');
-Route::get('/tarqatildi', [HomeController::class, 'tarqatildi'])->name('tarqatildi');
-Route::get('/home_create', [HomeController::class, 'create'])->name('home_create');
-Route::post('/home_story', [HomeController::class, 'story'])->name('home_story');
-Route::post('/home_story_pedding', [HomeController::class, 'story_pedding'])->name('home_story_pedding');
-Route::get('/korzinka', [HomeController::class, 'korzinka'])->name('korzinka');
-Route::get('/korzinka/bolim/{coato}', [HomeController::class, 'korzinkaBolimCoato'])->name('korzinka_bolim_coato');
-Route::post('/korzinka_delete', [HomeController::class, 'korzinka_delete'])->name('korzinka_delete');
-Route::post('/korzinka_faktura', [HomeController::class, 'korzinka_faktura'])->name('korzinka_faktura');
-Route::get('/korzinka_show/{id}', [HomeController::class, 'korzinka_show'])->name('korzinka_show');
-Route::post('/korzinka_faktura_image', [HomeController::class, 'korzinka_faktura_image'])->name('korzinka_faktura_image');
-
-Route::get('/faktura', [FakturaController::class, 'index'])->name('faktura');
-Route::get('/faktura_show/{id}', [FakturaController::class, 'faktura_show'])->name('faktura_show');
-Route::post('/faktura_image', [FakturaController::class, 'faktura_image'])->name('faktura_image');
-
-Route::get('/bolim', [BolimController::class, 'index'])->name('bolim');
-Route::get('/create_bolim', [BolimController::class, 'create'])->name('create_bolim');
-Route::post('/create_bolim/story', [BolimController::class, 'story'])->name('create_bolim_story');
-Route::get('/bolim/{id}', [BolimController::class, 'show'])->name('bolim_show');
-Route::post('/create_bolim/update', [BolimController::class, 'update'])->name('create_bolim_update');
-Route::post('/create_bolim/create/hodim', [BolimController::class, 'hodimStory'])->name('create_bolim_create_hodim');
-Route::post('/create_bolim/delete/hodim', [BolimController::class, 'hodimDelete'])->name('create_bolim_delete_hodim');
-
-Route::get('/chart', [ChartController::class, 'index'])->name('chart');
-
-Route::get('/xisobot', [ChartController::class, 'xisobot'])->name('xisobot');
 
 
-Route::get('/hodimlar', [HomeController::class, 'Hodimlar'])->name('Hodimlar');
-Route::post('/hodimlar/create', [HomeController::class, 'HodimlarCreate'])->name('HodimlarCreate');
-Route::post('/hodimlar/delete', [HomeController::class, 'HodimlarDelete'])->name('HodimlarDelete');
-Route::post('/hodimlar/resset/password', [HomeController::class, 'HodimRessetPassword'])->name('HodimRessetPassword');
-Route::post('/resset/korzinka', [HomeController::class, 'RetsertKorzinka'])->name('RetsertKorzinka');
+
+/*   ADMINISTRATOR  */
+
+Route::get('/admin_user', [UserController::class, 'admin_user'])->name('admin_user');
+Route::post('/admin_create', [UserController::class, 'admin_create'])->name('admin_create');
+Route::get('/admin_user_show/{id}', [UserController::class, 'admin_user_show'])->name('admin_user_show');
+Route::post('/admin_update', [UserController::class, 'admin_update'])->name('admin_update');
+Route::post('/admin_update_password', [UserController::class, 'admin_update_password'])->name('admin_update_password');
+Route::get('/admin_profel', [UserController::class, 'admin_profel'])->name('admin_profel');
+Route::post('/admin_profel_update_password', [UserController::class, 'admin_profel_update_password'])->name('admin_profel_update_password');
