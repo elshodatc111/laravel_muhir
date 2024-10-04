@@ -4,12 +4,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BolimController;
+use App\Http\Controllers\MuxirController;
 
 
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+/*   Muxirlar */
+Route::get('/muxir', [MuxirController::class, 'muxir'])->name('muxir');
+Route::get('/muxir_korzinka', [MuxirController::class, 'muxir_korzinka'])->name('muxir_korzinka');
+Route::get('/muxir_new', [MuxirController::class, 'muxir_new'])->name('muxir_new');
+Route::post('/muxir_new_create', [MuxirController::class, 'muxir_new_create'])->name('muxir_new_create');
+Route::get('/muxir_new_two', [MuxirController::class, 'muxir_new_two'])->name('muxir_new_two');
+Route::post('/muxir_new_create_two', [MuxirController::class, 'muxir_new_create_two'])->name('muxir_new_create_two');
 
 /*   BO'LIMLAR */
 Route::get('/bolim', [BolimController::class, 'bolim'])->name('bolim');

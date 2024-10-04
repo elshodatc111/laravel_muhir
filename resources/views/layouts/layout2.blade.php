@@ -79,7 +79,7 @@
             </li>
             @if(auth()->user()->role==1 OR auth()->user()->role==2 OR auth()->user()->role==3)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('muxir') }}">
                     <i class="bi bi-hurricane"></i>
                     <span>Muxirlar</span>
                 </a>
