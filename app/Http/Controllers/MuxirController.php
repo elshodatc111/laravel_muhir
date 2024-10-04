@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class MuxirController extends Controller{
     public function muxir(){
-        $Muxir = Muxir::where('coato','10400')->where('type','null')->get();
+        $Muxir = Muxir::where('coato','10400')->where('type','null')->orderby('number','asc')->get();
         return view('muxir.muxir',compact('Muxir'));
+    }
+    public function muxir_delete(Request $request){
+        $Muxir = Muxir::find($request->id);
+        $Muxir->delete();
+        return redirect()->back()->with('success', "Muxir o'chirildi");
     }
     public function muxir_korzinka(){
         return view('muxir.muxir_korzinka');

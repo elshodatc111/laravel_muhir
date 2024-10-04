@@ -14,6 +14,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /*   Muxirlar */
 Route::get('/muxir', [MuxirController::class, 'muxir'])->name('muxir');
+Route::post('/muxir_delete', [MuxirController::class, 'muxir_delete'])->name('muxir_delete');
 Route::get('/muxir_korzinka', [MuxirController::class, 'muxir_korzinka'])->name('muxir_korzinka');
 Route::get('/muxir_new', [MuxirController::class, 'muxir_new'])->name('muxir_new');
 Route::post('/muxir_new_create', [MuxirController::class, 'muxir_new_create'])->name('muxir_new_create');

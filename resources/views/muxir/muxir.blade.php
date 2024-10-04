@@ -33,9 +33,9 @@
 @endif
 <section class="section dashboard">
   <div class="card recent-sales overflow-auto">
-    <div class="card-body">   
-      <h4 class="card-title w-100 text-center">Mavjud muxirlar</h4> 
-      <table class="table text-center table-striped table-bordered datatable">
+    <div class="card-body pt-4">   
+      <input type="text" id="searchInput" class="form-control mb-3" placeholder="Qidiruv...">
+      <table class="table text-center table-striped table-bordered" id="muxirTable">
         <thead>
           <tr>
             <th class="bg-primary text-white text-center">Muxir raqami</th>
@@ -55,7 +55,8 @@
                 <input type="hidden" name="id" value="{{ $item['id'] }}">
                 <button type="submit" class="btn btn-primary p-0 px-1"><i class="bi bi-plus"></i></button>
               </form>
-              <form action="" method="post" style="display:inline">
+              <form action="{{ route('muxir_delete') }}" method="post" style="display:inline">
+                @csrf 
                 <input type="hidden" name="id" value="{{ $item['id'] }}">
                 <button type="submit" class="btn btn-danger p-0 px-1"><i class="bi bi-trash"></i></button>
               </form>
@@ -73,4 +74,30 @@
 </section>
 
 </main>
+
+<script>
+  document.getElementById('searchInput').addEventListener('keyup', function() {
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById('searchInput');
+    filter = input.value.toLowerCase();
+    table = document.getElementById('muxirTable');
+    tr = table.getElementsByTagName('tr');
+    
+    for (i = 1; i < tr.length; i++) { // start from 1 to skip the header row
+      tr[i].style.display = 'none'; // hide rows by default
+      
+      td = tr[i].getElementsByTagName('td');
+      for (j = 0; j < td.length; j++) {
+        if (td[j]) {
+          txtValue = td[j].textContent || td[j].innerText;
+          if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            tr[i].style.display = ''; // show row if a match is found
+            break; // stop searching other columns
+          }
+        }
+      }
+    }
+  });
+</script>
+
 @endsection
