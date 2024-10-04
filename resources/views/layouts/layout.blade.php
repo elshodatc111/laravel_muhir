@@ -117,7 +117,7 @@
             </li>
             @if(auth()->user()->role==1 OR auth()->user()->role==2)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('bolim') }}">
                     <i class="bi bi-file-person"></i>
                     <span>Bo'limlar(Hodimlar)</span>
                 </a>
