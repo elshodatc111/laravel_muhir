@@ -32,23 +32,69 @@
   </div>
 @endif
 <section class="section dashboard">
-  <div class="card recent-sales overflow-auto">
-    <div class="card-body">   
-      <table class="table text-center table-striped table-bordered datatable">
-        <thead>
-          <tr>
-            <th class="bg-primary text-white text-center">#</th>
-            <th class="bg-primary text-white text-center">Muxir raqami</th>
-            <th class="bg-primary text-white text-center">Ro'yhatga olindi</th>
-            <th class="bg-primary text-white text-center">Operator</th>
-            <th class="bg-primary text-white text-center">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-
-        
-        </tbody>
-      </table>
+  <div class="row">
+    <div class="col-6">
+      <div class="card recent-sales overflow-auto">
+        <h4 class="card-title w-100 text-center">Tarqatish uchun yig'ilgan muxirlar</h4>
+        <div class="card-body">   
+          <table class="table text-center table-striped table-bordered">
+            <thead>
+              <tr>
+                <th class="bg-primary text-white text-center">#</th>
+                <th class="bg-primary text-white text-center">Muxir raqami</th>
+                <th class="bg-primary text-white text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @forelse($Muxir as $item)
+                <tr>
+                  <td>{{ $loop->index+1 }}</td>
+                  <td>{{ $item['number'] }}</td>
+                  <td>
+                    <form action="{{ route('muxir_korzinka_muxir_del') }}" method="post">
+                      @csrf 
+                      <input type="hidden" name="id" value="{{ $item['id'] }}">
+                      <button class="btn btn-danger p-0 px-1"><i class="bi bi-trash"></i></button>
+                    </form>
+                  </td>
+                </tr>
+              @empty
+                <tr>
+                  <td class="text-center" colspan=3>Tarqatish uchun muxirlar mavjud emas.</td>
+                </tr>
+              @endforelse
+            </tbody>
+          </table>
+          @if($count!=0)
+          <div class="w-100 text-center">
+            <form action="{{ route('muxir_korzinka_muxir_del_all') }}" method="post">
+              @csrf 
+              <button class="btn btn-danger">Yig'ilganlarni barchasini o'chirish</button>
+            </form>
+          </div>
+          @endif 
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card recent-sales overflow-auto">
+        <h4 class="card-title w-100 text-center">Qabul qiluvchi haqidagi ma`lumot</h4>
+        <div class="card-body">   
+          <form action="" method="post">
+            <label for="">Qabul qiluvchi bo'lim</label>
+            <select name="" required class="form-select my-2">
+              <option value="">Tanlang...</option>
+            </select>
+            <label for="">Qabul qiluvchi hodim</label>
+            <select name="" required class="form-select my-2">
+              <option value="">Tanlang...</option>
+            </select>
+            @if($count!=0)
+            <button class="btn btn-primary w-100">Tasdiqlash</button>
+            @endif
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </section>

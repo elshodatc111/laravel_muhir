@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Muxir;
 use Illuminate\Http\Request;
 
-class MuxirController extends Controller{
+class MuxirController extends Controller{ 
     public function muxir(){
         $Muxir = Muxir::where('coato','10400')->where('type','null')->orderby('number','asc')->get();
         return view('muxir.muxir',compact('Muxir'));
@@ -14,8 +14,33 @@ class MuxirController extends Controller{
         $Muxir->delete();
         return redirect()->back()->with('success', "Muxir o'chirildi");
     }
+    public function muxir_add_korzinka(Request $request){
+        $Muxir = Muxir::find($request->id);
+        $Muxir->type = 'pedding';
+        $Muxir->save();
+        return redirect()->back()->with('success', "Muxir korzinkaga qo'shildi.");
+    }
     public function muxir_korzinka(){
-        return view('muxir.muxir_korzinka');
+        $Muxir = Muxir::where('type','pedding')->get();
+        $count = count($Muxir);
+        return view('muxir.muxir_korzinka',compact('Muxir','count'));
+    }
+    public function muxir_korzinka_muxir_del(Request $request){
+        $Muxir = Muxir::find($request->id);
+        $Muxir->type = 'null';
+        $Muxir->save();
+        return redirect()->back()->with('success', "Muxir olib tashlandi.");
+    }
+    public function muxir_korzinka_muxir_del_all(){
+        $Muxir = Muxir::where('type','pedding')->get();
+        $i=0;
+        foreach ($Muxir as $key => $value) {
+            $muxir2 = Muxir::find($value->id);
+            $muxir2->type = 'null';
+            $muxir2->save();
+            $i++;
+        }
+        return redirect()->back()->with('success', $i." ta muxir olib tashlandi.");
     }
     public function muxir_new(){
         return view('muxir.muxir_new');

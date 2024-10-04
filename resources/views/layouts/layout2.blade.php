@@ -32,10 +32,16 @@
         </div>
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-                <li class="nav-item dropdown" title="Korzinka">
+                <li class="nav-item dropdown" title="Yig'ilgan naryad blankasi">
                     <a class="nav-link nav-icon" href="#">
                         <i class="bi bi-hourglass-split"></i>
-                        <span class="badge bg-success badge-number">2</span>
+                        <span class="badge bg-success badge-number">12</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" title="Yig'ilgan muxirlar">
+                    <a class="nav-link nav-icon" href="{{ route('muxir_korzinka') }}">
+                        <i class="bi bi-hourglass-split"></i>
+                        <span class="badge bg-success badge-number">@include('layouts.alert.muxir')</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown pe-3">

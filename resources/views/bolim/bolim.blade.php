@@ -60,7 +60,7 @@
   <div class="card recent-sales overflow-auto">
     <div class="card-body">
       <h2 class="card-title w-100 text-center">Yangi bo'lim qo'shish</h2>   
-      <form action="{{ route('bolim_hodim_create') }}" method="post">
+      <form action="{{ route('bolim_create') }}" method="post">
         @csrf 
         <label for="coato" class="mb-2">Bo'lim kodi</label>
         <input type="number" name="coato" required class="form-control">

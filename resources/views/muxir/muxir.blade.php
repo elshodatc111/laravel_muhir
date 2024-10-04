@@ -51,15 +51,18 @@
             <td>{{ $item['created_at'] }}</td>
             <td>{{ $item['meneger'] }}</td>
             <td>
-              <form action="" method="post" style="display:inline">
+              <form action="{{ route('muxir_add_korzinka') }}" method="post" style="display:inline">
+              @csrf 
                 <input type="hidden" name="id" value="{{ $item['id'] }}">
                 <button type="submit" class="btn btn-primary p-0 px-1"><i class="bi bi-plus"></i></button>
               </form>
+              @if(auth()->user()->role==1)
               <form action="{{ route('muxir_delete') }}" method="post" style="display:inline">
                 @csrf 
                 <input type="hidden" name="id" value="{{ $item['id'] }}">
                 <button type="submit" class="btn btn-danger p-0 px-1"><i class="bi bi-trash"></i></button>
               </form>
+              @endif 
             </td>
           </tr>
           @empty
