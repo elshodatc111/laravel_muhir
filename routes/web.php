@@ -23,6 +23,11 @@ Route::get('/muxir_new', [MuxirController::class, 'muxir_new'])->name('muxir_new
 Route::post('/muxir_new_create', [MuxirController::class, 'muxir_new_create'])->name('muxir_new_create');
 Route::get('/muxir_new_two', [MuxirController::class, 'muxir_new_two'])->name('muxir_new_two');
 Route::post('/muxir_new_create_two', [MuxirController::class, 'muxir_new_create_two'])->name('muxir_new_create_two');
+Route::get('/korzinka/bolim/{coato}', [MuxirController::class, 'korzinkaBolimCoato'])->name('korzinka_bolim_coato');  
+Route::post('/muxir_faktura_pdf', [MuxirController::class, 'muxir_faktura_pdf'])->name('muxir_faktura_pdf');
+Route::get('/muxir_faktura_show/{id}', [MuxirController::class, 'muxir_faktura_show'])->name('muxir_faktura_show');  // Xisob Faktura uchun show page
+Route::post('/faktura_upload_muxir', [MuxirController::class, 'faktura_upload_muxir'])->name('faktura_upload_muxir'); // Xisob fakturani yuklash
+Route::post('/faktura_delete_muxir', [MuxirController::class, 'faktura_delete_muxir'])->name('faktura_delete_muxir');
 
 /*   BO'LIMLAR */
 Route::get('/bolim', [BolimController::class, 'bolim'])->name('bolim');

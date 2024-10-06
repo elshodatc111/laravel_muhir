@@ -76,20 +76,46 @@
         </div>
       </div>
     </div>
+
+   <script>
+      function showUser(str) {
+        if (str == "") {
+          document.getElementById("txtHint").innerHTML = "";
+          return;
+        } else {
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+          };
+          xmlhttp.open("GET","korzinka/bolim/"+str,true);
+          xmlhttp.send();
+        }
+      }
+    </script>
     <div class="col-6">
       <div class="card recent-sales overflow-auto">
         <h4 class="card-title w-100 text-center">Qabul qiluvchi haqidagi ma`lumot</h4>
         <div class="card-body">   
-          <form action="" method="post">
+          <form action="{{ route('muxir_faktura_pdf') }}" method="post">
+            @csrf 
+            <input type="hidden" name="count" value="{{$count}}">
             <label for="">Qabul qiluvchi bo'lim</label>
-            <select name="" required class="form-select my-2">
-              <option value="">Tanlang...</option>
+            <select name="coato" onchange="showUser(this.value)" required class="form-select my-2">
+              <option value="_">Tanlang...</option> 
+              @foreach($Bolim as $item)
+                <option value="{{ $item['coato'] }}">{{ $item['name'] }}</option>
+              @endforeach
             </select>
-            <label for="">Qabul qiluvchi hodim</label>
-            <select name="" required class="form-select my-2">
-              <option value="">Tanlang...</option>
-            </select>
+            <div id="txtHint">
+              <label for="hodim" class="my-2">Bo'limdagi masul shaxs</label>
+              <select name="hodim" class="form-select" required>
+                <option value="">Tanlang...</option>
+              </select>
+            </div>
             @if($count!=0)
+            <br>
             <button class="btn btn-primary w-100">Tasdiqlash</button>
             @endif
           </form>
@@ -100,4 +126,5 @@
 </section>
 
 </main>
+
 @endsection

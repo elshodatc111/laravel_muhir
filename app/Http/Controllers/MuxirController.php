@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Muxir;
+use App\Models\Bolim;
+use App\Models\Hodim;
+use App\Models\MuxirFaktura;
 use Illuminate\Http\Request;
 
 class MuxirController extends Controller{ 
@@ -23,7 +26,96 @@ class MuxirController extends Controller{
     public function muxir_korzinka(){
         $Muxir = Muxir::where('type','pedding')->get();
         $count = count($Muxir);
-        return view('muxir.muxir_korzinka',compact('Muxir','count'));
+        $Bolim = Bolim::get();
+        return view('muxir.muxir_korzinka',compact('Muxir','count','Bolim'));
+    }
+    public function korzinkaBolimCoato($coato){
+        if($coato=="_"){
+            $text = '<label for="hodim" class="mt-2">Bo\'limdagi masul shaxs</label>
+            <select name="hodim" class="form-select mt-2" required>
+            <option value="">Tanlang...</option>';
+            $text .= '</select>';
+            return $text;
+        }
+        $text = '<label for="hodim" class="mt-2">Bo\'limdagi masul shaxs</label>
+        <select name="hodim" class="form-select mt-2" required>
+          <option value="">Tanlang...</option>';
+          foreach (Hodim::where('coato',$coato)->where('status','true')->get() as $value) {
+            $text .= "<option value=".$value['id'].">".$value['name']."</option>";
+          }
+        $text .= '</select>';
+        return $text;
+    }   
+    public function muxir_faktura_pdf(Request $request){
+        $validate = $request->validate([
+            'count' => 'required',
+            'coato' => 'required',
+            'hodim' => 'required',
+        ]);
+        $number = MuxirFaktura::max('id')+1;
+        $Bolim = Bolim::where('coato',$request->coato)->first()->name;
+        $MuxirFaktura = MuxirFaktura::create([
+            'number'=> $number,
+            'coato'=>$request->coato,
+            'coato_name'=>$Bolim,
+            'count'=>$request->count,
+            'hodim'=>$request->hodim,
+            'operator'=>auth()->user()->name,
+            'scanner'=>'false',
+            'scanner_url'=>'null',
+        ]);
+        $Muxir = Muxir::where('type','pedding')->get();
+        foreach ($Muxir as $key => $value) {
+            $Muxir2 = Muxir::find($value->id);
+            $Muxir2->type = "Send";
+            $Muxir2->status = "true";
+            $Muxir2->faktura = $number;
+            $Muxir2->save();
+        }
+        return redirect()->route('muxir_faktura_show',$number);
+    }
+    public function muxir_faktura_show($id){
+        $MuxirFaktura = MuxirFaktura::where('number',$id)->first();
+        $Hodim = Hodim::find($MuxirFaktura['hodim']);
+
+        $i=1;
+        $m=1;
+        $Muxirs = array();
+        foreach (Muxir::where('faktura',$MuxirFaktura['number'])->where('type','Send')->get() as $key => $value) {
+            $Muxirs[$m][$i] = $value->number;
+            if($i==5){
+                $i=$i/5;
+                $m++;
+                $i = $i-1;
+            }
+            $i++;
+        }
+        return view('muxir.muxir_faktura_show',compact('MuxirFaktura','Hodim','Muxirs'));
+    }
+    public function faktura_upload_muxir(Request $request){
+        $request->validate([
+            'scanner' => 'required|mimes:pdf',
+            'number' => 'required',
+        ]);
+        $MuxirFaktura = MuxirFaktura::where('number',$request->number)->first();
+        $imageName = "№-".$request->number." ".time().'.'.$request->scanner->extension();
+        $request->scanner->move(public_path('muxir'), $imageName);
+        $Korzinka = MuxirFaktura::where('number',$request->number)->first();
+        $Korzinka->scanner_url = $imageName;
+        $Korzinka->scanner = 'upload';
+        $Korzinka->save();
+        return redirect()->back()->with('success', "Faktura tasdiqlangan fayli yuklandi");
+    }
+    public function faktura_delete_muxir(Request $request){
+        $request->validate([
+            'number' => 'required',
+        ]);
+        $MuxirFaktura = MuxirFaktura::where('number',$request->number)->first();
+        $Korzinka = MuxirFaktura::where('number',$request->number)->first();
+        $Korzinka->scanner_url = 'null';
+        $Korzinka->scanner = 'false';
+        $Korzinka->save();
+        return redirect()->back()->with('success', "Faktura tasdiqlangan fayli o'chirildi");
     }
     public function muxir_korzinka_muxir_del(Request $request){
         $Muxir = Muxir::find($request->id);
