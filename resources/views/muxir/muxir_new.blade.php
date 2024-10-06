@@ -13,7 +13,7 @@
   </nav>
 </div>
 <div class="row mb-3">
-  <div class="col-3"><a href="{{ route('muxir') }}" class="btn btn-secondary w-100">Mavjud muxirlar</a></div>
+  <div class="col-3"><a href="{{ route('muxirs') }}" class="btn btn-secondary w-100">Mavjud muxirlar</a></div>
   <div class="col-3"><a href="{{ route('muxir_korzinka') }}" class="btn btn-secondary w-100">Korzinka muxirlar</a></div>
   <div class="col-3"><a href="{{ route('muxir_new') }}" class="btn btn-primary w-100">Yangi muxir</a></div>
   <div class="col-3"><a href="{{ route('muxir_new_two') }}" class="btn btn-secondary w-100">Yangi muxir 2</a></div>

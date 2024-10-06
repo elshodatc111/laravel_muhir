@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BolimController;
 use App\Http\Controllers\MuxirController;
+use App\Http\Controllers\ArxivController;
+use App\Http\Controllers\SearchController;
 
 
 
@@ -13,7 +15,19 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /*   Muxirlar */
-Route::get('/muxir', [MuxirController::class, 'muxir'])->name('muxir');
+Route::get('/qidruv_muxir', [SearchController::class, 'qidruv_muxir'])->name('qidruv_muxir');
+Route::get('/qidruv_naryad_blanka', [SearchController::class, 'qidruv_naryad_blanka'])->name('qidruv_naryad_blanka');
+Route::get('/qidruv_simkarta', [SearchController::class, 'qidruv_simkarta'])->name('qidruv_simkarta');
+Route::get('/qidruv_naryadlar', [SearchController::class, 'qidruv_naryadlar'])->name('qidruv_naryadlar');
+
+/*   Muxirlar */
+Route::get('/arxiv_muxir', [ArxivController::class, 'arxiv_muxir'])->name('arxiv_muxir');
+Route::get('/arxiv_naryad_blanka', [ArxivController::class, 'arxiv_naryad_blanka'])->name('arxiv_naryad_blanka');
+Route::get('/arxiv_simkarta', [ArxivController::class, 'arxiv_simkarta'])->name('arxiv_simkarta');
+Route::get('/arxiv_naryadlar', [ArxivController::class, 'arxiv_naryadlar'])->name('arxiv_naryadlar');
+
+/*   Muxirlar */
+Route::get('/muxirs', [MuxirController::class, 'muxirs'])->name('muxirs');
 Route::post('/muxir_delete', [MuxirController::class, 'muxir_delete'])->name('muxir_delete');
 Route::post('/muxir_add_korzinka', [MuxirController::class, 'muxir_add_korzinka'])->name('muxir_add_korzinka');
 Route::get('/muxir_korzinka', [MuxirController::class, 'muxir_korzinka'])->name('muxir_korzinka');
@@ -28,6 +42,7 @@ Route::post('/muxir_faktura_pdf', [MuxirController::class, 'muxir_faktura_pdf'])
 Route::get('/muxir_faktura_show/{id}', [MuxirController::class, 'muxir_faktura_show'])->name('muxir_faktura_show');  // Xisob Faktura uchun show page
 Route::post('/faktura_upload_muxir', [MuxirController::class, 'faktura_upload_muxir'])->name('faktura_upload_muxir'); // Xisob fakturani yuklash
 Route::post('/faktura_delete_muxir', [MuxirController::class, 'faktura_delete_muxir'])->name('faktura_delete_muxir');
+Route::post('/faktura_delete_faktura', [MuxirController::class, 'faktura_delete_faktura'])->name('faktura_delete_faktura');
 
 /*   BO'LIMLAR */
 Route::get('/bolim', [BolimController::class, 'bolim'])->name('bolim');

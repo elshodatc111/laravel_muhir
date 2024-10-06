@@ -78,14 +78,14 @@
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('home') }}">
                     <i class="bi bi-house"></i>
                     <span>Home</span>
                 </a>
             </li>
             @if(auth()->user()->role==1 OR auth()->user()->role==2 OR auth()->user()->role==3)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('muxir') }}">
+                <a class="nav-link collapsed" href="{{ route('muxirs') }}">
                     <i class="bi bi-hurricane"></i>
                     <span>Muxirlar</span>
                 </a>
@@ -110,13 +110,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('arxiv_muxir') }}">
                     <i class="bi bi-file-medical-fill"></i>
                     <span>Arxiv</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('qidruv_muxir') }}">
                     <i class="bi bi-search"></i>
                     <span>Qidruv</span>
                 </a>

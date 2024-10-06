@@ -8,9 +8,25 @@ use App\Models\MuxirFaktura;
 use Illuminate\Http\Request;
 
 class MuxirController extends Controller{ 
-    public function muxir(){
+    public function muxirs(){
         $Muxir = Muxir::where('coato','10400')->where('type','null')->orderby('number','asc')->get();
         return view('muxir.muxir',compact('Muxir'));
+    }
+    public function faktura_delete_faktura(Request $request){
+        $validate = $request->validate([
+            'number' => 'required',
+        ]);
+        $Muxir = Muxir::where('type','Send')->where('faktura',$request->number)->get();
+        foreach ($Muxir as $key => $value) {
+            $Item = Muxir::find($value->id);
+            $Item->type = 'null';
+            $Item->status = 'null';
+            $Item->faktura = 'null';
+            $Item->save();
+        }
+        $MuxirFaktura = MuxirFaktura::where('number',$request->number)->first();
+        $MuxirFaktura->delete();
+        return redirect()->route('muxirs')->with('success', "Muxir hisob fakturasi o'chirildi");
     }
     public function muxir_delete(Request $request){
         $Muxir = Muxir::find($request->id);

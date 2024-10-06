@@ -1,14 +1,15 @@
 @extends('layouts.layout2')
-@section('title',"Faktura")
+@section('title',"Muhir hisob varaq")
 @section('content')
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Faktura</h1>
+  <h1>Muhir hisob varaq</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-      <li class="breadcrumb-item active">Faktura</li>
+      <li class="breadcrumb-item"><a href="{{ route('muxirs') }}">Muhir hisob varaqlar</a></li>
+      <li class="breadcrumb-item active">Muhir hisob varaq</li>
     </ol>
   </nav>
 </div>
@@ -120,22 +121,32 @@
                 PDF faylni ko'rsatish imkoni bo'lmagan holda shu matnni ko'rsating.
             </iframe>
             @if(auth()->user()->role==1)
-              <form action="{{ route('faktura_delete_muxir') }}" method="post">
+              <form action="{{ route('faktura_delete_faktura') }}" method="post">
                 @csrf 
                 <input type="hidden" name="number" value="{{ $MuxirFaktura['number'] }}">
-                <div class="w-100 text-center">
-                <button class="btn btn-danger w-50"><i class="bi bi-trash">O'chirish</i></button>
+                <div class="w-100 text-center mt-3">
+                <button class="btn btn-danger w-50"><i class="bi bi-trash"> Hisob fakturani o'chirish</i></button>
                 </div>
               </form>
             @endif
           @endif
+
         </div>
       </div>
     </div>
 </div>
-<div class="w-100 text-center">
+  <div class="w-100 text-center">
     <button id="printButton" class="btn btn-primary mb-3"><i class="bi bi-printer"></i> HISOB VARAQ FAKTURA PECHAT</button>
   </div>
+  @if(auth()->user()->role==1)
+    <form action="{{ route('faktura_delete_faktura') }}" method="post">
+      @csrf 
+      <input type="hidden" name="number" value="{{ $MuxirFaktura['number'] }}">
+      <div class="w-100 text-center mt-3">
+      <button class="btn btn-warning text-white w-50"><i class="bi bi-trash"> Hisob fakturani o'chirish</i></button>
+      </div>
+    </form>
+  @endif
 </section>
 
 </main>
