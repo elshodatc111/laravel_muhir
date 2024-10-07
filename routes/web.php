@@ -9,7 +9,7 @@ use App\Http\Controllers\ArxivController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\NaryadBController;
 
-
+//naryad_blanka_show
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -25,6 +25,11 @@ Route::get('/naryad_blanka_NEW', [NaryadBController::class, 'naryad_blanka_NEW']
 Route::post('/naryad_blanka_NEW_story', [NaryadBController::class, 'naryad_blanka_NEW_story'])->name('naryad_blanka_NEW_story');
 Route::get('/naryad_blanka_NEW_TWO', [NaryadBController::class, 'naryad_blanka_NEW_TWO'])->name('naryad_blanka_NEW_TWO');
 Route::post('/naryad_blanka_NEW_TWO_story', [NaryadBController::class, 'naryad_blanka_NEW_TWO_story'])->name('naryad_blanka_NEW_TWO_story');
+Route::post('/naryad_blanka_faktura_pdf', [NaryadBController::class, 'naryad_blanka_faktura_pdf'])->name('naryad_blanka_faktura_pdf');
+Route::post('/naryad_blanka_faktura_delete', [NaryadBController::class, 'naryad_blanka_faktura_delete'])->name('naryad_blanka_faktura_delete');
+Route::get('/naryad_blanka_show/{id}', [NaryadBController::class, 'naryad_blanka_show'])->name('naryad_blanka_show');  // Xisob Faktura uchun show page
+Route::post('/naryad_blanka_faktura_upload', [NaryadBController::class, 'naryad_blanka_faktura_upload'])->name('naryad_blanka_faktura_upload');
+Route::post('/naryad_blanka_faktura_delete_pdf', [NaryadBController::class, 'naryad_blanka_faktura_delete_pdf'])->name('naryad_blanka_faktura_delete_pdf');
 
 /*   Muxirlar */
 Route::get('/qidruv_muxir', [SearchController::class, 'qidruv_muxir'])->name('qidruv_muxir');

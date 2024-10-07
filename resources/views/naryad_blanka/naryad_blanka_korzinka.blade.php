@@ -1,14 +1,14 @@
 @extends('layouts.layout')
-@section('title',"Korzinka")
+@section('title',"Naryad blankalar")
 @section('content')
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Muhirlar</h1>
+  <h1>Naryad blankalar</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-      <li class="breadcrumb-item active">Korzinka muxirlar</li>
+      <li class="breadcrumb-item active">Naryad blankalar</li>
     </ol>
   </nav>
 </div>
@@ -98,7 +98,7 @@
       <div class="card recent-sales overflow-auto">
         <h4 class="card-title w-100 text-center">Qabul qiluvchi haqidagi ma`lumot</h4>
         <div class="card-body">   
-          <form action="{{ route('muxir_faktura_pdf') }}" method="post">
+          <form action="{{ route('naryad_blanka_faktura_pdf') }}" method="post">
             @csrf 
             <input type="hidden" name="count" value="{{$count}}">
             <label for="">Qabul qiluvchi bo'lim</label>
