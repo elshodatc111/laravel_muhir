@@ -26,7 +26,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('home') }}" class="logo d-flex align-items-center">
                 <img src="../assets/img/logo1.png" alt="">
-                <span class="d-none d-lg-block">TEXT</span>
+                <p class="pt-2 w-100 text-black">"HET" AJ " ENERGOSAVDO"<br> FILIALI QASHQADARYO <br>bo'linmasi</p>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>

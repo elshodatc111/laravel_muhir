@@ -53,12 +53,12 @@
             <td>{{ $item['number'] }}</td>
             <td><a href="{{ route('muxir_faktura_show',$item['faktura']) }}"> № - {{ $item['faktura'] }}</a></td>
             <td>{{ $item['coato_name'] }}</td>
-            <td>{{ $item['hodim'] }}</td>
+            <td>{{ $item['name'] }}</td>
             <td>{{ $item['operator'] }}</td>
             <td>{{ $item['created_at'] }}</td>
           </tr>
           @empty
-
+          <tr><td colspan=7 class="text-center">Tarqatilgan naryadlar mavjud emas.</td></tr>
           @endforelse
         </tbody>
       </table>
