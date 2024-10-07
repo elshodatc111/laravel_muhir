@@ -1,14 +1,14 @@
 @extends('layouts.layout')
-@section('title',"Muhir hisob varaqlar")
+@section('title',"Naryad blanka")
 @section('content')
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Muhir hisob varaqlar</h1>
+  <h1>Naryad blanka</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-      <li class="breadcrumb-item active">Muhir hisob varaqlar</li>
+      <li class="breadcrumb-item active">Naryad blanka</li>
     </ol>
   </nav>
 </div>
@@ -26,8 +26,8 @@
   </div>
 @endif
 <div class="row mb-3">
-  <div class="col-3"><a href="{{ route('arxiv_muxir') }}" class="btn btn-primary w-100">Muxirlar</a></div>
-  <div class="col-3"><a href="{{ route('arxiv_naryad_blanka') }}" class="btn btn-secondary w-100">Naryad(blankalar)</a></div>
+  <div class="col-3"><a href="{{ route('arxiv_muxir') }}" class="btn btn-secondary w-100">Muxirlar</a></div>
+  <div class="col-3"><a href="{{ route('arxiv_naryad_blanka') }}" class="btn btn-primary w-100">Naryad(blankalar)</a></div>
   <div class="col-3"><a href="{{ route('arxiv_naryadlar') }}" class="btn btn-secondary w-100">Naryadlar</a></div>
   <div class="col-3"><a href="{{ route('arxiv_simkarta') }}" class="btn btn-secondary w-100">Sim kartalar</a></div>
 </div>
@@ -50,7 +50,7 @@
           @forelse($Faktura as $item)
           <tr>
             <td>{{ $loop->index+1 }}</td>
-            <td><a href="{{ route('muxir_faktura_show',$item['number'] ) }}">№ {{ $item['number'] }}</a></td>
+            <td><a href="{{ route('naryad_blanka_show',$item['number'] ) }}">№ {{ $item['number'] }}</a></td>
             <td>{{ $item['coato_name'] }}</td>
             <td>{{ $item['hodim'] }}</td>
             <td>{{ $item['count'] }} dona</td>

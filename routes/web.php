@@ -14,6 +14,7 @@ use App\Http\Controllers\NaryadBController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 /* Naryadlar Blankalar */
 Route::get('/naryad_blanka', [NaryadBController::class, 'naryad_blanka'])->name('naryad_blanka');
 Route::post('/naryad_blanka_delete', [NaryadBController::class, 'naryad_blanka_delete'])->name('naryad_blanka_delete');

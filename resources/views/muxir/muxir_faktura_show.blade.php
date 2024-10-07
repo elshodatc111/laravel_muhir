@@ -8,7 +8,7 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('muxirs') }}">Muhir hisob varaqlar</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('arxiv_muxir') }}">Arxiv muhir hisob varaqlar</a></li>
       <li class="breadcrumb-item active">Muhir hisob varaq</li>
     </ol>
   </nav>

@@ -8,7 +8,7 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('naryad_blanka') }}">Naryad blankalari</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('arxiv_naryad_blanka') }}">Naryad blankalari</a></li>
       <li class="breadcrumb-item active">Naryad blanka</li>
     </ol>
   </nav>
