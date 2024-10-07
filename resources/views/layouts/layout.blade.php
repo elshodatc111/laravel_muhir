@@ -33,16 +33,28 @@
         </div>
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown" title="Mavjud naryad blankalar">
+                    <a class="nav-link nav-icon" href="{{ route('naryad_blanka') }}">
+                        <i class="bi bi-card-list"></i>
+                        <span class="badge bg-info badge-number">@include('layouts.alert.mavjud_blanka')</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" title="Yig'ilgan naryad blankalar">
+                    <a class="nav-link nav-icon" href="{{ route('naryad_blanka_korzinka') }}">
+                        <i class="bi bi-card-list"></i>
+                        <span class="badge bg-warning badge-number">@include('layouts.alert.naryad_blanka')</span>
+                    </a>
+                </li>
                 <li class="nav-item dropdown" title="Mavjud muxirlar">
                     <a class="nav-link nav-icon" href="{{ route('muxirs') }}">
                         <i class="bi bi-hourglass-split"></i>
-                        <span class="badge bg-success badge-number">@include('layouts.alert.mavjud_muxir')</span>
+                        <span class="badge bg-info badge-number">@include('layouts.alert.mavjud_muxir')</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown" title="Yig'ilgan muxirlar">
                     <a class="nav-link nav-icon" href="{{ route('muxir_korzinka') }}">
                         <i class="bi bi-hourglass-split"></i>
-                        <span class="badge bg-success badge-number">@include('layouts.alert.muxir')</span>
+                        <span class="badge bg-warning badge-number">@include('layouts.alert.muxir')</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown pe-3">

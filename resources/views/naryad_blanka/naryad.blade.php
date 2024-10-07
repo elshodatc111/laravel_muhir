@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title',"Muxirlar")
+@section('title',"naryad (blanka)")
 @section('content')
 <main id="main" class="main">
 
@@ -51,13 +51,13 @@
             <td>{{ $item['created_at'] }}</td>
             <td>{{ $item['meneger'] }}</td>
             <td>
-              <form action="#" method="post" style="display:inline">
+              <form action="{{ route('naryad_blanka_korzinka_add') }}" method="post" style="display:inline">
               @csrf 
                 <input type="hidden" name="id" value="{{ $item['id'] }}">
                 <button type="submit" class="btn btn-primary p-0 px-1"><i class="bi bi-plus"></i></button>
               </form>
               @if(auth()->user()->role==1)
-              <form action="#" method="post" style="display:inline">
+              <form action="{{ route('naryad_blanka_delete') }}" method="post" style="display:inline">
                 @csrf 
                 <input type="hidden" name="id" value="{{ $item['id'] }}">
                 <button type="submit" class="btn btn-danger p-0 px-1"><i class="bi bi-trash"></i></button>

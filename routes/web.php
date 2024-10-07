@@ -14,12 +14,17 @@ use App\Http\Controllers\NaryadBController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-/* Naryadlar */
+/* Naryadlar Blankalar */
 Route::get('/naryad_blanka', [NaryadBController::class, 'naryad_blanka'])->name('naryad_blanka');
+Route::post('/naryad_blanka_delete', [NaryadBController::class, 'naryad_blanka_delete'])->name('naryad_blanka_delete');
 Route::get('/naryad_blanka_korzinka', [NaryadBController::class, 'naryad_blanka_korzinka'])->name('naryad_blanka_korzinka');
+Route::post('/naryad_blanka_korzinka_add', [NaryadBController::class, 'naryad_blanka_korzinka_add'])->name('naryad_blanka_korzinka_add');
+Route::post('/naryad_blanka_korzinka_delete', [NaryadBController::class, 'naryad_blanka_korzinka_delete'])->name('naryad_blanka_korzinka_delete');
+Route::post('/naryad_blanka_korzinka_delete_all', [NaryadBController::class, 'naryad_blanka_korzinka_delete_all'])->name('naryad_blanka_korzinka_delete_all');
 Route::get('/naryad_blanka_NEW', [NaryadBController::class, 'naryad_blanka_NEW'])->name('naryad_blanka_NEW');
 Route::post('/naryad_blanka_NEW_story', [NaryadBController::class, 'naryad_blanka_NEW_story'])->name('naryad_blanka_NEW_story');
 Route::get('/naryad_blanka_NEW_TWO', [NaryadBController::class, 'naryad_blanka_NEW_TWO'])->name('naryad_blanka_NEW_TWO');
+Route::post('/naryad_blanka_NEW_TWO_story', [NaryadBController::class, 'naryad_blanka_NEW_TWO_story'])->name('naryad_blanka_NEW_TWO_story');
 
 /*   Muxirlar */
 Route::get('/qidruv_muxir', [SearchController::class, 'qidruv_muxir'])->name('qidruv_muxir');
