@@ -50,7 +50,7 @@
           @forelse($Faktura as $item)
           <tr>
             <td>{{ $loop->index+1 }}</td>
-            <td><a href="{{ route('muxir_faktura_show',$item['number'] ) }}">{{ $item['number'] }}</a></td>
+            <td><a href="{{ route('muxir_faktura_show',$item['number'] ) }}">№ {{ $item['number'] }}</a></td>
             <td>{{ $item['coato_name'] }}</td>
             <td>{{ $item['hodim'] }}</td>
             <td>{{ $item['count'] }} dona</td>

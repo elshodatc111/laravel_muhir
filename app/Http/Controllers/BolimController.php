@@ -8,7 +8,15 @@ use Illuminate\Http\Request;
 class BolimController extends Controller{
     public function bolim(){
         $Bolim = Bolim::get();
-        return view('bolim.bolim',compact('Bolim'));
+        $B = array();
+        foreach ($Bolim as $key => $value) {
+            $B[$key]['id'] = $value['id'];
+            $B[$key]['coato'] = $value['coato'];
+            $B[$key]['name'] = $value['name'];
+            $B[$key]['about'] = $value['about'];
+            $B[$key]['count'] = count(Hodim::where('coato',$value->coato)->get());
+        }
+        return view('bolim.bolim',compact('Bolim','B'));
     }
     public function bolim_create(Request $request){
         $validate = $request->validate([

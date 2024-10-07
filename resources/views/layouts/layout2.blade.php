@@ -32,10 +32,10 @@
         </div>
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-                <li class="nav-item dropdown" title="Yig'ilgan naryad blankasi">
-                    <a class="nav-link nav-icon" href="#">
+                <li class="nav-item dropdown" title="Mavjud muxirlar">
+                    <a class="nav-link nav-icon" href="{{ route('muxirs') }}">
                         <i class="bi bi-hourglass-split"></i>
-                        <span class="badge bg-success badge-number">12</span>
+                        <span class="badge bg-success badge-number">@include('layouts.alert.mavjud_muxir')</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown" title="Yig'ilgan muxirlar">
@@ -91,7 +91,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('naryad_blanka') }}">
                     <i class="bi bi-file-earmark-diff-fill"></i>
                     <span>Naryad(blanka)</span>
                 </a>

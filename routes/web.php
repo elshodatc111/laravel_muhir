@@ -7,12 +7,19 @@ use App\Http\Controllers\BolimController;
 use App\Http\Controllers\MuxirController;
 use App\Http\Controllers\ArxivController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\NaryadBController;
 
 
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+/* Naryadlar */
+Route::get('/naryad_blanka', [NaryadBController::class, 'naryad_blanka'])->name('naryad_blanka');
+Route::get('/naryad_blanka_korzinka', [NaryadBController::class, 'naryad_blanka_korzinka'])->name('naryad_blanka_korzinka');
+Route::get('/naryad_blanka_NEW', [NaryadBController::class, 'naryad_blanka_NEW'])->name('naryad_blanka_NEW');
+Route::post('/naryad_blanka_NEW_story', [NaryadBController::class, 'naryad_blanka_NEW_story'])->name('naryad_blanka_NEW_story');
+Route::get('/naryad_blanka_NEW_TWO', [NaryadBController::class, 'naryad_blanka_NEW_TWO'])->name('naryad_blanka_NEW_TWO');
 
 /*   Muxirlar */
 Route::get('/qidruv_muxir', [SearchController::class, 'qidruv_muxir'])->name('qidruv_muxir');

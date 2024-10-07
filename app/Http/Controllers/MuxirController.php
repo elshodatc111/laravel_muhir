@@ -83,6 +83,7 @@ class MuxirController extends Controller{
         $Muxir = Muxir::where('type','pedding')->get();
         foreach ($Muxir as $key => $value) {
             $Muxir2 = Muxir::find($value->id);
+            $Muxir2->coato = $request->coato;
             $Muxir2->type = "Send";
             $Muxir2->status = "true";
             $Muxir2->faktura = $number;
@@ -93,7 +94,6 @@ class MuxirController extends Controller{
     public function muxir_faktura_show($id){
         $MuxirFaktura = MuxirFaktura::where('number',$id)->first();
         $Hodim = Hodim::find($MuxirFaktura['hodim']);
-
         $i=1;
         $m=1;
         $Muxirs = array();
@@ -129,6 +129,7 @@ class MuxirController extends Controller{
         $MuxirFaktura = MuxirFaktura::where('number',$request->number)->first();
         $Korzinka = MuxirFaktura::where('number',$request->number)->first();
         $Korzinka->scanner_url = 'null';
+        $Korzinka->coato = 10400;
         $Korzinka->scanner = 'false';
         $Korzinka->save();
         return redirect()->back()->with('success', "Faktura tasdiqlangan fayli o'chirildi");

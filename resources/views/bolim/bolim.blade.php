@@ -39,12 +39,12 @@
           </tr>
         </thead>
         <tbody>
-          @forelse($Bolim as $item)
+          @forelse($B as $item)
             <tr>
               <td>{{ $loop->index+1 }}</td>
               <td><a href="{{ route('bolim_show',$item['id']) }}">{{ $item['coato'] }}</a></td>
               <td style="text-align:left">{{ $item['name'] }}</td>
-              <td></td>
+              <td>{{ $item['count'] }}</td>
               <td>{{ $item['about'] }}</td>
             </tr>
           @empty
