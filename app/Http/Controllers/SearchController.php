@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SearchController extends Controllers{
+class SearchController extends Controller{
     public function qidruv_muxir(){
         return "qidruv_muxir";
     }

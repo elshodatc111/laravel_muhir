@@ -29,7 +29,7 @@
 <section class="section dashboard">
   <div class="row">
     <div class="col-6">
-      <div class="card recent-sales overflow-auto print-section" style="font-size:14px;">
+      <div class="card recent-sales overflow-auto print-section" style="font-size:10px;">
         <div class="card-body">   
           <P class="card-title w-100 text-center">HISOB VARAQ FAKTURA № {{ $MuxirFaktura['number'] }}</P>
           <table class="table table-bordered text-center">
@@ -38,12 +38,12 @@
               <td><b>"QABUL QILUVCHI"</b></td>
             </tr>
             <tr>
-              <td>QASHQADARYO ENERGO SAVDO</td>
-              <td>{{ $MuxirFaktura['coato_name'] }}</td>
+              <td class="w-50">"HET" AJ "ENERGOSAVDO FILIALI QASHQADARYO BO'LINMASI</td>
+              <td class="w-50">{{ $MuxirFaktura['coato_name'] }}</td>
             </tr>
           </table>
-          <table class="table table-bordered text-center">
-            <tr>
+          <table class="table table-bordered text-center p-0 m-0">
+            <tr class="p-0 m-0">
               @if($MuxirFaktura['count']==1)
               <th>Muhir raqami</th>
               @elseif($MuxirFaktura['count']==2)
@@ -67,33 +67,33 @@
               @endif
             </tr>
             @foreach($Muxirs as $item)
-            <tr>
+            <tr class="p-0 m-0">
               @foreach($item as $value)
-              <td>{{ $value }}</td>
+              <td class="p-0 m-0">{{ $value }}</td>
               @endforeach
             </tr>
             @endforeach
           </table>
           <table class="table table-bordered text-center">
             <tr>
-              <td><b>JAMI MUXIR SONI:</b></td>
-              <td><b>{{ $MuxirFaktura['count'] }} (dona)</b></td>
+              <td class="p-0 m-0 w-50"><b>JAMI MUXIR SONI:</b></td>
+              <td class="p-0 m-0 w-50"><b>{{ $MuxirFaktura['count'] }} (dona)</b></td>
             </tr>
           </table>
           <div class="row text-center">
             <div class="col-6">
               <b>EEXO va HQAT tadbiq qilish sektori boshlig'i</b>
               <p>___________ Karimov Muzrob</p>
-              <b>Berib yubordim</b>
+              <b class="mt-0 pt-0">Berib yubordim</b>
               <p>___________ {{ $MuxirFaktura['operator'] }}</p>
             </div>
             <div class="col-6">
               <b>{{ $MuxirFaktura['coato_name'] }}</b>
-              <p>___________ {{ $Hodim['name'] }}</p>
-              <b>Berib yuborilgan vaqt</b>
+              <p class="mt-0 pt-0">___________ {{ $Hodim['name'] }}</p>
+              <b class="mt-0 pt-0">Berib yuborilgan vaqt</b>
               <p>{{ $MuxirFaktura['created_at'] }}</p>
             </div>
-            <div class="col-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa animi rerum amet perferendis, mollitia deleniti beatae porro magnam expedita quaerat iusto, odio dolorem aperiam unde repellat voluptatem voluptate quos neque.</div>
+            <div class="col-12">Menga berilgan naryad bilankalari va muxrlarni saqlash majburiyatlarini bajarmaganligim oqibatida naryad blankalari va muxrlarga nisbatan zarar uchun qonunda belgilangan tartibda javobgar boʻlishim toʻgʻrisida ogoxlantirildim.</div>
           </div>
         </div>
       </div>

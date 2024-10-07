@@ -29,7 +29,7 @@
 <section class="section dashboard">
   <div class="row">
     <div class="col-6">
-      <div class="card recent-sales overflow-auto print-section" style="font-size:14px;">
+      <div class="card recent-sales overflow-auto print-section" style="font-size:10px;">
         <div class="card-body">   
           <P class="card-title w-100 text-center">HISOB VARAQ FAKTURA № {{ $MuxirFaktura['number'] }}</P>
           <table class="table table-bordered text-center">
@@ -38,51 +38,51 @@
               <td><b>"QABUL QILUVCHI"</b></td>
             </tr>
             <tr>
-              <td>QASHQADARYO ENERGO SAVDO</td>
-              <td>{{ $MuxirFaktura['coato_name'] }}</td>
+              <td style="width:50%;">"HET" AJ "ENERGOSAVDO FILIALI QASHQADARYO BO'LINMASI</td>
+              <td style="width:50%;">{{ $MuxirFaktura['coato_name'] }}</td>
             </tr>
           </table>
-          <table class="table table-bordered text-center">
+          <table class="table table-bordered text-center p-0 m-0">
             <tr>
               @if($MuxirFaktura['count']==1)
-              <th>Naryad raqami</th>
+              <th>Naryad raqam</th>
               @elseif($MuxirFaktura['count']==2)
-              <th>Naryad raqami</th>
-              <th>Naryad raqami</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
               @elseif($MuxirFaktura['count']==3)
-              <th>Naryad raqami</th>
-              <th>Naryad raqami</th>
-              <th>Naryad raqami</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
               @elseif($MuxirFaktura['count']==4)
-              <th>Naryad raqami</th>
-              <th>Naryad raqami</th>
-              <th>Naryad raqami</th>
-              <th>Naryad raqami</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
               @else 
-              <th>Muhir raqami</th>
-              <th>Muhir raqami</th>
-              <th>Muhir raqami</th>
-              <th>Muhir raqami</th>
-              <th>Muhir raqami</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
+              <th>Naryad raqam</th>
               @endif
             </tr>
             @foreach($Muxirs as $item)
             <tr>
               @foreach($item as $value)
-              <td>{{ $value }}</td>
+              <td class="m-0 p-0">{{ $value }}</td>
               @endforeach
             </tr>
             @endforeach
           </table>
           <table class="table table-bordered text-center">
             <tr>
-              <td><b>JAMI NARYAD BLANKA SONI:</b></td>
-              <td><b>{{ $MuxirFaktura['count'] }} (dona)</b></td>
+              <td class=" p-0 m-0 w-50"><b>JAMI NARYAD BLANKA SONI:</b></td>
+              <td class=" p-0 m-0 w-50"><b>{{ $MuxirFaktura['count'] }} (dona)</b></td>
             </tr>
           </table>
           <div class="row text-center">
             <div class="col-6">
-              <b>EEXO va HQAT tadbiq qilish sektori boshlig'i</b>
+              <b>ASKUE tizimini tadbiq etish sektori boshligi</b>
               <p>___________ Karimov Muzrob</p>
               <b>Berib yubordim</b>
               <p>___________ {{ $MuxirFaktura['operator'] }}</p>
@@ -93,7 +93,7 @@
               <b>Berib yuborilgan vaqt</b>
               <p>{{ $MuxirFaktura['created_at'] }}</p>
             </div>
-            <div class="col-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa animi rerum amet perferendis, mollitia deleniti beatae porro magnam expedita quaerat iusto, odio dolorem aperiam unde repellat voluptatem voluptate quos neque.</div>
+            <div class="col-12">Menga berilgan naryad bilankalari va muxrlarni saqlash majburiyatlarini bajarmaganligim oqibatida naryad blankalari va muxrlarga nisbatan zarar uchun qonunda belgilangan tartibda javobgar boʻlishim toʻgʻrisida ogoxlantirildim.</div>
           </div>
         </div>
       </div>

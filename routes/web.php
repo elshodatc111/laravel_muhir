@@ -32,7 +32,7 @@ Route::get('/naryad_blanka_show/{id}', [NaryadBController::class, 'naryad_blanka
 Route::post('/naryad_blanka_faktura_upload', [NaryadBController::class, 'naryad_blanka_faktura_upload'])->name('naryad_blanka_faktura_upload');
 Route::post('/naryad_blanka_faktura_delete_pdf', [NaryadBController::class, 'naryad_blanka_faktura_delete_pdf'])->name('naryad_blanka_faktura_delete_pdf');
 
-/*   Muxirlar */
+/*   Qadruv */
 Route::get('/qidruv_muxir', [SearchController::class, 'qidruv_muxir'])->name('qidruv_muxir');
 Route::get('/qidruv_naryad_blanka', [SearchController::class, 'qidruv_naryad_blanka'])->name('qidruv_naryad_blanka');
 Route::get('/qidruv_simkarta', [SearchController::class, 'qidruv_simkarta'])->name('qidruv_simkarta');
