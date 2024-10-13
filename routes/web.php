@@ -7,6 +7,7 @@ use App\Http\Controllers\BolimController;
 use App\Http\Controllers\MuxirController;
 use App\Http\Controllers\ArxivController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\NaryadController;
 use App\Http\Controllers\NaryadBController;
 
 //naryad_blanka_show
@@ -14,6 +15,11 @@ use App\Http\Controllers\NaryadBController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+/* Naryadlar */
+Route::get('/naryad', [NaryadController::class, 'naryad'])->name('naryad');
+Route::get('/naryad_create', [NaryadController::class, 'naryad_create'])->name('naryad_create');
+Route::post('/naryad_create_story', [NaryadController::class, 'naryad_create_story'])->name('naryad_create_story');
 
 /* Naryadlar Blankalar */
 Route::get('/naryad_blanka', [NaryadBController::class, 'naryad_blanka'])->name('naryad_blanka');
@@ -69,6 +75,8 @@ Route::post('/bolim_update', [BolimController::class, 'bolim_update'])->name('bo
 Route::post('/bolim_hodim_create', [BolimController::class, 'bolim_hodim_create'])->name('bolim_hodim_create');
 Route::post('/bolim_hodim_lock', [BolimController::class, 'bolim_hodim_lock'])->name('bolim_hodim_lock');
 Route::get('/bolim_show/{id}', [BolimController::class, 'bolim_show'])->name('bolim_show');
+Route::get('/bolim_show_pdf/{coato}', [BolimController::class, 'bolim_show_pdf'])->name('bolim_show_pdf');
+Route::post('/bolim_show_pdf_upload', [BolimController::class, 'bolim_show_pdf_upload'])->name('bolim_show_pdf_upload');
 
 /*   ADMINISTRATOR */
 Route::get('/admin_user', [UserController::class, 'admin_user'])->name('admin_user');

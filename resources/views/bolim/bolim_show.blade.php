@@ -120,6 +120,9 @@
           @endforelse
         </tbody>
       </table>
+      <div class="w-100 text-center">
+        <a href="{{ route('bolim_show_pdf',$Bolim->coato) }}" class="btn btn-info text-white">Majburiyatnomalar</a>
+      </div>
     </div>
   </div>
 

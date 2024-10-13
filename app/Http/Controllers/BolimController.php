@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Bolim;
 use App\Models\Hodim;
+use App\Models\BolimPDF;
 use Illuminate\Http\Request;
 
 class BolimController extends Controller{
@@ -79,5 +80,23 @@ class BolimController extends Controller{
         }
         $Hodim->save();
         return redirect()->back()->with('success', $Text);
+    }
+    public function bolim_show_pdf($coato){
+        $Bolim = Bolim::where('coato',$coato)->first();
+        $BolimPDF = BolimPDF::where('coato',$coato)->get();
+        return view('bolim.pdf',compact('Bolim','BolimPDF'));
+    }
+    public function bolim_show_pdf_upload(Request $request){
+        $request->validate([
+            'file' => 'required|mimes:pdf',
+            'coato' => 'required',
+        ]);
+        $imageName = time().'.'.$request->file->extension();
+        $request->file->move(public_path('majburiyatnoma'), $imageName);
+        BolimPDF::create([
+            'coato' => $request->coato,
+            'url' => $imageName,
+        ]);
+        return redirect()->back()->with('success', "Yangi majburiyatnoma saqlandi.");
     }
 }
